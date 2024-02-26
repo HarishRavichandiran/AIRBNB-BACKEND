@@ -38,9 +38,15 @@ app.use(express.json());
 
 // CORS
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: 'https://beamish-rolypoly-fd3cf2.netlify.app',
   credentials: true
 }));
+
+// app.use(cors({
+//   origin: process.env.CLIENT_URL,
+//   credentials: true
+// }));
+
 
 // use express router
 app.use("/", require("./routes"));
