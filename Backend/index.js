@@ -39,7 +39,7 @@ app.use(express.json());
 // CORS
 app.use(cors({
   origin: 'https://beamish-rolypoly-fd3cf2.netlify.app',
-  credentials: true
+  // credentials: true
 }));
 
 // app.use(cors({
