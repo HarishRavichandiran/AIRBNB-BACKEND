@@ -37,12 +37,18 @@ app.use(
 app.use(express.json());
 
 // CORS
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-  })
-);
+const allowedOrigins = ['https://beamish-rolypoly-fd3cf2.netlify.app'];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Check if the origin is allowed
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 // use express router
 app.use("/", require("./routes"));
